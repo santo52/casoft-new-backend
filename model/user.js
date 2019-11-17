@@ -3,9 +3,10 @@
 const mongoose = require('mongoose')
 const bcrypt = require('bcrypt')
 const SALT_WORK_FACTOR = 10
-const Schema = mongoose.Schema
 
-const UserSchema = Schema({
+const Name = 'User'
+
+const Schema = new mongoose.Schema({
   firstname: { type: String, required: true },
   lastname: { type: String, required: true },
   username: { type: String, required: true, index: { unique: true } },
@@ -17,7 +18,6 @@ const UserSchema = Schema({
   afp: { type: String },
   afc: { type: String },
   box: { type: String }, // caja de compensación
-  companies: { type: Array },
   telephone: { type: String },
   document: { type: String },
   documentExpeditionDate: { type: Date },
@@ -31,16 +31,21 @@ const UserSchema = Schema({
   avatar: { type: String },
   firstDay: { type: Date },
   salary: { basic: { type: Number }, transport: { type: Number } },
+  session_expires: { type: Date },
+  deleted: { type: Boolean, default: false },
+  isAdmin: { type: Boolean, default: false },
   roleId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Role'
   },
-  session_expires: { type: Date },
-  deleted: { type: Boolean, default: false }
+  companies: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Company'
+  }]
 })
 
 
-UserSchema.pre(['save', 'updateOne'], function (next) {
+Schema.pre(['save', 'updateOne'], function (next) {
 
   const user = this;
   const updatePassword = user._update && user._update.password
@@ -66,8 +71,28 @@ UserSchema.pre(['save', 'updateOne'], function (next) {
 })
 
 
-UserSchema.methods.comparePassword = async function (candidatePassword) {
+Schema.methods.comparePassword = async function (candidatePassword) {
   return await bcrypt.compare(candidatePassword, this.password)
 }
 
-module.exports = mongoose.model('User', UserSchema);
+Schema.methods.getUserLogin = async (username, password) => {
+  const user = await mongoose.model(Name).findOne({
+    $and: [
+      { $or: [{ username }, { email: username }] },
+      { deleted: false }
+    ]
+  })
+
+  if(user){
+    const isCorrectPassword = await user.comparePassword(password)
+    return isCorrectPassword ? user : null
+  }
+
+}
+
+
+
+module.exports = {
+  schema: () => Schema,
+  model: () => mongoose.model(Name, Schema)
+}

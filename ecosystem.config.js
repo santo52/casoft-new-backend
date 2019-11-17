@@ -11,8 +11,7 @@ module.exports = {
         name: 'mongodb://127.0.0.1:27017/casoft',
       }),
       PORT: 3003,
-      SECRET: '6CAE0BA73A126B1576437A05438F8F35BFB88C380AD4FFD3AFF801167F9F32DE',
-      SESSION_HOURS: 2
+      PK_PASSPHRASE: 'casoft'
     },
     env_production: {
       NODE_ENV: 'production',
@@ -21,8 +20,7 @@ module.exports = {
         name: 'mongodb://127.0.0.1:27017/casoft',
       }),
       PORT: 3004,
-      SECRET: '6CAE0BA73A126B1576437A05438F8F35BFB88C380AD4FFD3AFF801167F9F32DE',
-      SESSION_HOURS: 2
+      PK_PASSPHRASE: 'casoft'
     }
   }],
 
