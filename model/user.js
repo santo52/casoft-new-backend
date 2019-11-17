@@ -1,7 +1,7 @@
 'use strict'
 
 const mongoose = require('mongoose')
-const bcrypt = require('bcrypt')
+const bcrypt = require('bcrypt-nodejs')
 const SALT_WORK_FACTOR = 10
 
 const Name = 'User'
@@ -50,13 +50,13 @@ Schema.pre(['save', 'updateOne'], function (next) {
   const user = this;
   const updatePassword = user._update && user._update.password
   const createPassword = user.isModified && user.isModified('password')
-
   if (!updatePassword && !createPassword) return next()
 
+  
   bcrypt.genSalt(SALT_WORK_FACTOR, function (err, salt) {
     if (err) return next(err)
 
-    bcrypt.hash(user.password || user._update.password, salt, function (err, hash) {
+    bcrypt.hash(user.password || user._update.password, salt, null, function (err, hash) {
       if (err) return next(err)
 
       if(updatePassword){
@@ -71,8 +71,8 @@ Schema.pre(['save', 'updateOne'], function (next) {
 })
 
 
-Schema.methods.comparePassword = async function (candidatePassword) {
-  return await bcrypt.compare(candidatePassword, this.password)
+Schema.methods.comparePassword = function (candidatePassword) {
+  return bcrypt.compareSync(candidatePassword, this.password)
 }
 
 Schema.methods.getUserLogin = async (username, password) => {
@@ -93,6 +93,7 @@ Schema.methods.getUserLogin = async (username, password) => {
 
 
 module.exports = {
+  getName: () => Name,
   schema: () => Schema,
   model: () => mongoose.model(Name, Schema)
 }

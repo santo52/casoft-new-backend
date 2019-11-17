@@ -2,7 +2,7 @@
 
 const mongoose = require('mongoose')
 
-const Name = 'Departament'
+const Name = 'Department'
 
 const Schema = new mongoose.Schema({
   name: { type: String, required: true },
@@ -13,7 +13,9 @@ const Schema = new mongoose.Schema({
   deleted: { type: Boolean, default: false }
 })
 
+
 module.exports = {
+  getName: () => Name,
   schema: () => Schema,
   model: () => mongoose.model(Name, Schema)
 }

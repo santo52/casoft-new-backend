@@ -1,38 +1,38 @@
 module.exports = [
 
     {
-        'route': '/roles',
-        'controller': 'RoleController',
+        'route': '/contracts',
+        'controller': 'ContractController',
         'method': 'getAll',
         'verb': 'GET',
         'roles': ['admin']
 
     },
     {
-        'route': '/roles',
-        'controller': 'RoleController',
+        'route': '/contracts',
+        'controller': 'ContractController',
         'method': 'create',
         'verb': 'POST',
         'roles': ['admin']
     },
     {
-        'route': '/roles/:id',
-        'controller': 'RoleController',
+        'route': '/contracts/:id',
+        'controller': 'ContractController',
         'method': 'get',
         'verb': 'GET',
         'roles': ['admin']
 
     },
     {
-        'route': '/roles/:id',
-        'controller': 'RoleController',
+        'route': '/contracts/:id',
+        'controller': 'ContractController',
         'method': 'update',
         'verb': 'PUT',
         'roles': ['admin']
     },
     {
-        'route': '/roles/:id',
-        'controller': 'RoleController',
+        'route': '/contracts/:id',
+        'controller': 'ContractController',
         'method': 'delete',
         'verb': 'DELETE',
         'roles': ['admin']

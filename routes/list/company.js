@@ -1,38 +1,38 @@
 module.exports = [
 
     {
-        'route': '/roles',
-        'controller': 'RoleController',
+        'route': '/companies',
+        'controller': 'CompanyController',
         'method': 'getAll',
         'verb': 'GET',
         'roles': ['admin']
 
     },
     {
-        'route': '/roles',
-        'controller': 'RoleController',
+        'route': '/companies',
+        'controller': 'CompanyController',
         'method': 'create',
         'verb': 'POST',
         'roles': ['admin']
     },
     {
-        'route': '/roles/:id',
-        'controller': 'RoleController',
+        'route': '/companies/:id',
+        'controller': 'CompanyController',
         'method': 'get',
         'verb': 'GET',
         'roles': ['admin']
 
     },
     {
-        'route': '/roles/:id',
-        'controller': 'RoleController',
+        'route': '/companies/:id',
+        'controller': 'CompanyController',
         'method': 'update',
         'verb': 'PUT',
         'roles': ['admin']
     },
     {
-        'route': '/roles/:id',
-        'controller': 'RoleController',
+        'route': '/companies/:id',
+        'controller': 'CompanyController',
         'method': 'delete',
         'verb': 'DELETE',
         'roles': ['admin']

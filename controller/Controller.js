@@ -1,16 +1,24 @@
-const { toJSON, toObjectID } = require('../utils/functions')
+"use strict";
 
-var _this = this;
+const { toJSON, toObjectID } = require('../utils/functions')
 
 class Controller {
 
   constructor(Model) {
-    _this.Model = Model.model()
+    if (!this.Model) {
+      this.Model = Model.model()
+    }
+
+    this.getAll = this.getAll.bind(this)
+    this.get = this.get.bind(this)
+    this.update = this.update.bind(this)
+    this.delete = this.delete.bind(this)
+    this.create = this.create.bind(this)
   }
 
   async getAll(req, res) {
     const filter = toJSON(req.body.filter) || { deleted: false }
-    const all = await _this.Model.find(filter) || {}
+    const all = await this.Model.find(filter) || {}
     res.status(200).send({ data: all })
   }
 
@@ -18,9 +26,9 @@ class Controller {
     const filter = toJSON(req.body.filter) || {}
     const _id = toObjectID(req.params.id)
 
-    _this.Model.findOne({ $and: [{ _id }, { ...filter }] }, (err, model) => {
+    this.Model.findOne({ $and: [{ _id }, { ...filter }] }, (err, model) => {
 
-      if(!model) return res.status(200).send({ data: {} })
+      if (!model) return res.status(200).send({ data: {} })
       const result = model._doc || model
       return res.status(200).send({ data: { ...result } })
     })
@@ -36,11 +44,11 @@ class Controller {
     const _id = toObjectID(req.params.id)
     const filter = toJSON(req.body.filter) || {}
 
-    _this.Model.updateOne({ $and: [{ _id }, { ...filter }] }, { ...data }, (err, model) => {
+    this.Model.updateOne({ $and: [{ _id }, { ...filter }] }, { ...data }, (err, model) => {
 
-      _this.Model.findById(_id, (err, model) => {
+      this.Model.findById(_id, (err, model) => {
 
-        if(!model) return res.status(200).send({ data: {} })
+        if (!model) return res.status(200).send({ data: {} })
         const result = model._doc || model
         return res.status(200).send({ data: { ...result } })
 
@@ -52,28 +60,11 @@ class Controller {
     const _id = toObjectID(req.params.id)
     const filter = toJSON(req.body.filter) || {}
 
-    _this.Model.updateOne({ $and: [{ _id }, { ...filter }] }, { deleted: true }, (err, model) => {
+    this.Model.updateOne({ $and: [{ _id }, { ...filter }] }, { deleted: true }, (err, model) => {
 
-      _this.Model.findById(_id, (err, model) => {
+      this.Model.findById(_id, (err, model) => {
 
-        if(!model) return res.status(200).send({ data: {} })
-        const result = model._doc || model
-        return res.status(200).send({ data: { ...result } })
-
-      })
-    })
-  }
-
-  restore(req, res) {
-
-    const _id = toObjectID(req.params.id)
-    const filter = toJSON(req.body.filter) || {}
-
-    _this.Model.updateOne({ $and: [{ _id }, { ...filter }] }, { deleted: false }, (err, model) => {
-
-      _this.Model.findById(_id, (err, model) => {
-
-        if(!model) return res.status(200).send({ data: {} })
+        if (!model) return res.status(200).send({ data: {} })
         const result = model._doc || model
         return res.status(200).send({ data: { ...result } })
 
@@ -87,7 +78,7 @@ class Controller {
       return res.status(400).send({ data: {} })
     }
 
-    _this.Model.create(toJSON(req.body.data), (err, model) => {
+    this.Model.create(toJSON(req.body.data), (err, model) => {
       if (err) return res.status(400).send({ ...err })
       return res.status(200).send({ data: { ...model._doc } })
     })

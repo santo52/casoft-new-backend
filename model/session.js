@@ -55,6 +55,7 @@ Schema.methods.create = (data) => {
 }
 
 module.exports = {
+  getName: () => Name,
   schema: () => Schema,
   model: () => mongoose.model(Name, Schema)
 }

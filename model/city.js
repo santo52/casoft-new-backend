@@ -14,7 +14,9 @@ const Schema = new mongoose.Schema({
   deleted: { type: Boolean, default: false }
 })
 
+
 module.exports = {
+  getName: () => Name,
   schema: () => Schema,
   model: () => mongoose.model(Name, Schema)
 }

@@ -1,38 +1,38 @@
 module.exports = [
 
     {
-        'route': '/roles',
-        'controller': 'RoleController',
+        'route': '/cities',
+        'controller': 'CityController',
         'method': 'getAll',
         'verb': 'GET',
         'roles': ['admin']
 
     },
     {
-        'route': '/roles',
-        'controller': 'RoleController',
+        'route': '/cities',
+        'controller': 'CityController',
         'method': 'create',
         'verb': 'POST',
         'roles': ['admin']
     },
     {
-        'route': '/roles/:id',
-        'controller': 'RoleController',
+        'route': '/cities/:id',
+        'controller': 'CityController',
         'method': 'get',
         'verb': 'GET',
         'roles': ['admin']
 
     },
     {
-        'route': '/roles/:id',
-        'controller': 'RoleController',
+        'route': '/cities/:id',
+        'controller': 'CityController',
         'method': 'update',
         'verb': 'PUT',
         'roles': ['admin']
     },
     {
-        'route': '/roles/:id',
-        'controller': 'RoleController',
+        'route': '/cities/:id',
+        'controller': 'CityController',
         'method': 'delete',
         'verb': 'DELETE',
         'roles': ['admin']

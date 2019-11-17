@@ -1,38 +1,38 @@
 module.exports = [
 
     {
-        'route': '/roles',
-        'controller': 'RoleController',
+        'route': '/document-types',
+        'controller': 'DocumentTypeController',
         'method': 'getAll',
         'verb': 'GET',
         'roles': ['admin']
 
     },
     {
-        'route': '/roles',
-        'controller': 'RoleController',
+        'route': '/document-types',
+        'controller': 'DocumentTypeController',
         'method': 'create',
         'verb': 'POST',
         'roles': ['admin']
     },
     {
-        'route': '/roles/:id',
-        'controller': 'RoleController',
+        'route': '/document-types/:id',
+        'controller': 'DocumentTypeController',
         'method': 'get',
         'verb': 'GET',
         'roles': ['admin']
 
     },
     {
-        'route': '/roles/:id',
-        'controller': 'RoleController',
+        'route': '/document-types/:id',
+        'controller': 'DocumentTypeController',
         'method': 'update',
         'verb': 'PUT',
         'roles': ['admin']
     },
     {
-        'route': '/roles/:id',
-        'controller': 'RoleController',
+        'route': '/document-types/:id',
+        'controller': 'DocumentTypeController',
         'method': 'delete',
         'verb': 'DELETE',
         'roles': ['admin']

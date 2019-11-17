@@ -37,11 +37,4 @@ module.exports = [
         'verb': 'DELETE',
         'roles': ['admin']
     },
-    {
-        'route': '/users/:id',
-        'controller': 'UserController',
-        'method': 'restore',
-        'verb': 'PUT',
-        'roles': ['admin']
-    }
 ]

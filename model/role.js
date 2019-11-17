@@ -26,6 +26,7 @@ const Schema = new mongoose.Schema({
 })
 
 module.exports = {
+  getName: () => Name,
   schema: () => Schema,
   model: () => mongoose.model(Name, Schema)
 }
