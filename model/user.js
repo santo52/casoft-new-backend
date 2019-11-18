@@ -7,6 +7,9 @@ const SALT_WORK_FACTOR = 10
 const Name = 'User'
 
 const Schema = new mongoose.Schema({
+
+  //Información básica
+
   firstname: { type: String, required: true },
   lastname: { type: String, required: true },
   username: { type: String, required: true, index: { unique: true } },
@@ -29,19 +32,46 @@ const Schema = new mongoose.Schema({
   civilStatus: { type: String },
   militaryCard:  { type: String },
   avatar: { type: String },
-  firstDay: { type: Date },
-  salary: { basic: { type: Number }, transport: { type: Number } },
-  session_expires: { type: Date },
   deleted: { type: Boolean, default: false },
+  active: { type: Boolean, default: true },
   isAdmin: { type: Boolean, default: false },
+  initialDate: { type: Date }, //fecha de ingreso
+  retirementDate: { type: Date }, //fecha de retiro
+
   roleId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Role'
   },
-  companies: [{
+  company: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Company'
-  }]
+  },
+
+
+  //información de pago
+  salary: { type: Number },
+  salaryInKind: { type: Number }, // salario en especie
+  transportAid: { type: Number }, // auxilio de transporte
+  transportAidType: { type: String }, // endinero = money, en especie = kind
+  payType: { type: String }, // efectivo = money, en cheque=check, consignación= consignment
+  accountType: { type: String }, // tipo de cuenta ahorros=savings, corriente=checking
+  accountNumber: { type: Number }, 
+  bankId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Bank'
+  },
+
+  isBonusPending: { type: Boolean }, //Prima pendiente de ajuste
+
+  lastBonusPayment: { type: Date }, //Fecha de último pago de prima
+  lastCesantiasPayment: { type: Date }, //Fecha de último pago de cesantias
+  lastInterestPayment: { type: Date }, //Fecha de último pago de interes sobre cesantias
+  lastVacationsPayment: { type: Date }, //Fecha de último pago de vacaciones
+
+  
+  
+
+  
 })
 
 

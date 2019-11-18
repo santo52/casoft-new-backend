@@ -7,7 +7,14 @@ const ContractRoutes = require('./list/contract')
 const CountryRoutes = require('./list/country')
 const DepartmentRoutes = require('./list/department')
 const DocumentTypeRoutes = require('./list/documentType')
+const ParafiscalRoutes = require('./list/parafiscal')
+const PayrollConceptRoutes = require('./list/payrollConcept')
+const PeriodicityRoutes = require('./list/periodicity')
+const ConceptTypeRoutes = require('./list/conceptType')
+const BankRoutes = require('./list/bank')
 const MenuRoutes = require('./list/menu')
+const PayrollConfigRoutes = require('./list/payroll')
+
 
 module.exports = [
   ...UserRoutes,
@@ -19,5 +26,11 @@ module.exports = [
   ...CountryRoutes,
   ...DepartmentRoutes,
   ...DocumentTypeRoutes,
-  ...MenuRoutes
+  ...MenuRoutes,
+  ...ParafiscalRoutes,
+  ...PayrollConceptRoutes,
+  ...PeriodicityRoutes,
+  ...ConceptTypeRoutes,
+  ...BankRoutes,
+  ...PayrollConfigRoutes
 ]

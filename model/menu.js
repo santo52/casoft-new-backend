@@ -12,14 +12,16 @@ const Schema = new mongoose.Schema({
 
   description: String,
 
-  parent: String,
+  menuId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Menu'
+  },
 
   icon: String,
 
-  routeId: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Route'
-  },
+  route: String,
+
+  order: {type: Number, default: 0},
 
   deleted: {
     type: Boolean,

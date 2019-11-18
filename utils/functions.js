@@ -25,9 +25,9 @@ module.exports = {
 
     if (!user.isAdmin) {
 
-      const { alias } = await Role.findById(user.roleId)
+      const roleData = await Role.findById(user.roleId)
 
-      if (!roles || !roles.includes(alias)) {
+      if (!roles || !roleData || !roles.includes(roleData.alias)) {
         const err = new InsufficientScopeError()
         return res.status(err.code || 500).send(err)
       }
