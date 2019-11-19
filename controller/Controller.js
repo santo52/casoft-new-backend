@@ -18,8 +18,8 @@ class Controller {
 
   async getAll(req, res) {
     const filter = toJSON(req.body.filter) || { deleted: false }
-    const all = await this.Model.find(filter) || {}
-    res.status(200).send({ data: all })
+    const data = await this.Model.find(filter) || {}
+    res.status(200).send({ data })
   }
 
   get(req, res) {
@@ -29,8 +29,8 @@ class Controller {
     this.Model.findOne({ $and: [{ _id }, { ...filter }] }, (err, model) => {
 
       if (!model) return res.status(200).send({ data: {} })
-      const result = model._doc || model
-      return res.status(200).send({ data: { ...result } })
+      const data = model._doc || model
+      return res.status(200).send({ data })
     })
   }
 
@@ -49,8 +49,8 @@ class Controller {
       this.Model.findById(_id, (err, model) => {
 
         if (!model) return res.status(200).send({ data: {} })
-        const result = model._doc || model
-        return res.status(200).send({ data: { ...result } })
+        const data = model._doc || model
+        return res.status(200).send({ data })
 
       })
     })
@@ -65,8 +65,8 @@ class Controller {
       this.Model.findById(_id, (err, model) => {
 
         if (!model) return res.status(200).send({ data: {} })
-        const result = model._doc || model
-        return res.status(200).send({ data: { ...result } })
+        const data = model._doc || model
+        return res.status(200).send({ data })
 
       })
     })
@@ -80,7 +80,8 @@ class Controller {
 
     this.Model.create(toJSON(req.body.data), (err, model) => {
       if (err) return res.status(400).send({ ...err })
-      return res.status(200).send({ data: { ...model._doc } })
+      const data = model._doc || model
+      return res.status(200).send({ data })
     })
   }
 

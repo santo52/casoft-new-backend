@@ -13,7 +13,12 @@ const PeriodicityRoutes = require('./list/periodicity')
 const ConceptTypeRoutes = require('./list/conceptType')
 const BankRoutes = require('./list/bank')
 const MenuRoutes = require('./list/menu')
+const AbsenceRoutes = require('./list/absence')
+const AbsenceTypeRoutes = require('./list/absenceType')
+const ExtraHourRoutes = require('./list/extraHour')
 const PayrollConfigRoutes = require('./list/payroll')
+const IncomeDepartureRoutes = require('./list/incomeDeparture')
+
 
 
 module.exports = [
@@ -32,5 +37,9 @@ module.exports = [
   ...PeriodicityRoutes,
   ...ConceptTypeRoutes,
   ...BankRoutes,
-  ...PayrollConfigRoutes
+  ...PayrollConfigRoutes,
+  ...ExtraHourRoutes,
+  ...AbsenceRoutes,
+  ...AbsenceTypeRoutes,
+  ...IncomeDepartureRoutes //registro de timbres entradas y salidas
 ]
