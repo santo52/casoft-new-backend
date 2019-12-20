@@ -6,6 +6,7 @@ const Name = 'AbsenceType';
 
 const Schema = new mongoose.Schema({
   name: { type: String, required: true },
+  percentPaid: { type: Number, default: 100 }, // porcentaje pagado
   deleted: { type: Boolean, default: false }
 })
 

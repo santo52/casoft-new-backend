@@ -23,6 +23,13 @@ app.oauth = new OAuth2Server({
 app.all('/api/oauth/token', obtainToken)
 app.use('/api/', authenticateRequest, routes)
 
+//Solo cuando es necesario cambiar la contraseña de admin
+if(process.env.firstConfiguration) {
+  const UserController = require(`./controller/UserController`)
+  const userController = new UserController()
+  app.put('/unprotected/users/:id', userController.update)  
+}
+
 function obtainToken(req, res) {
   const request = new OAuth2Server.Request(req)
   const response = new OAuth2Server.Response(res)

@@ -11,7 +11,8 @@ module.exports = {
         name: 'mongodb://127.0.0.1:27017/casoft',
       }),
       PORT: 3003,
-      PK_PASSPHRASE: 'casoft'
+      PK_PASSPHRASE: 'casoft',
+      firstConfiguration: false
     },
     env_production: {
       NODE_ENV: 'production',
@@ -20,7 +21,8 @@ module.exports = {
         name: 'mongodb://127.0.0.1:27017/casoft',
       }),
       PORT: 3004,
-      PK_PASSPHRASE: 'casoft'
+      PK_PASSPHRASE: 'casoft',
+      firstConfiguration: false
     }
   }],
 
