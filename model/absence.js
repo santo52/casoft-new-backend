@@ -6,7 +6,7 @@ const Name = 'Absence';
 
 const Schema = new mongoose.Schema({
   start: { type: String, required: true },
-  finish: { type: String, required: true },
+  time: { type: Number, required: true },
   absenceTypeId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'AbsenceType'
