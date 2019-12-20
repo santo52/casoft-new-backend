@@ -21,5 +21,12 @@ module.exports = [
         'method': 'upload',
         'verb': 'POST',
         'roles': ['admin']
-    }
+    },
+    {
+        'route': '/income-departure/:id',
+        'controller': 'IncomeDepartureController',
+        'method': 'delete',
+        'verb': 'DELETE',
+        'roles': ['admin']
+    },
 ]

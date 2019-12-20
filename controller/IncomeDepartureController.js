@@ -43,8 +43,6 @@ class IncomeDepartureController extends Controller {
       return res.status(200).send({ data: [] })
     }
 
-    console.log(req.body.data)
-
     const data = toJSON(req.body.data)
 
     if (!Array.isArray(data)) {

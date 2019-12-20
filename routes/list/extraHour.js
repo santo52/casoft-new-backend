@@ -37,4 +37,11 @@ module.exports = [
         'verb': 'DELETE',
         'roles': ['admin']
     },
+    {
+        'route': '/extra-hours/upload',
+        'controller': 'ExtraHourController',
+        'method': 'upload',
+        'verb': 'POST',
+        'roles': ['admin']
+    },
 ]
