@@ -46,12 +46,26 @@ const Schema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Company'
   },
+  centerId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Center'
+  },
+  contractId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Contract'
+  },
+
+  
+  documentTypeId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'DocumentType'
+  },
 
 
   //información de pago
-  salary: { type: Number },
+  salary: { type: Number, default: 828116 },
   salaryInKind: { type: Number }, // salario en especie
-  transportAid: { type: Number }, // auxilio de transporte
+  transportAid: { type: Number, default: 97032 }, // auxilio de transporte
   transportAidType: { type: String }, // endinero = money, en especie = kind
   payType: { type: String }, // efectivo = money, en cheque=check, consignación= consignment
   accountType: { type: String }, // tipo de cuenta ahorros=savings, corriente=checking
