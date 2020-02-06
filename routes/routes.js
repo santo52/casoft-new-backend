@@ -18,6 +18,7 @@ const AbsenceTypeRoutes = require('./list/absenceType')
 const ExtraHourRoutes = require('./list/extraHour')
 const PayrollConfigRoutes = require('./list/payroll')
 const IncomeDepartureRoutes = require('./list/incomeDeparture')
+const VariableRoutes = require('./list/variable')
 
 
 
@@ -41,5 +42,6 @@ module.exports = [
   ...ExtraHourRoutes,
   ...AbsenceRoutes,
   ...AbsenceTypeRoutes,
+  ...VariableRoutes,
   ...IncomeDepartureRoutes //registro de timbres entradas y salidas
 ]
